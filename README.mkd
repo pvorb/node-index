@@ -1,0 +1,2 @@
+**bake-index** is a package that allows automatically creating index files for
+websites.
