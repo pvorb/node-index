@@ -1,5 +1,5 @@
 var isodate = require("isodate"),
-    Index = require("./");
+    Index = require("./").Index;
 
 var dbinf = {
 	host: "localhost",
