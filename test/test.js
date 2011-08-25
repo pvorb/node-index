@@ -14,10 +14,10 @@ var opt = {
 	index: [
 		{
 			title: "Blog",
-			pattern: /\/\d\/[^\/]+/i,
+			pattern: /\/\d\/[^\/]+/,
 			path: {
 				first: "index.html",
-				pattern: "index/page-{{page}}.html"
+				pattern: "index-{{page}}.html"
 			},
 			template: "index.tpl",
 			limit: 2,
