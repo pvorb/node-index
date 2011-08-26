@@ -1,4 +1,4 @@
-var Index = require("../").Index;
+var Index = require("../");
 
 var opt = {
 	directories: {
