@@ -1,11 +1,11 @@
 {
 	"author": "Paul Vorbach <paul@vorb.de> (http://vorb.de)",
-	"name": "indexing",
+	"name": "Index",
 	"description": "bakes index files or feeds for websites",
 	"version": "0.0.0",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/pvorb/indexing.git"
+		"url": "git://github.com/pvorb/node-indexing.git"
 	},
 	"bugs": {
 		"web": "https://github.com/pvorb/indexing/issues"
