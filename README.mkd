@@ -1,2 +1,6 @@
-**indexing** is a package that allows automatically creating index files for
-websites.
+**Index** is a package that allows creating an index of webpages in a
+mongo database.
+
+(Intended to be used with [bake][bake])
+
+[bake]://github.com/pvorb/node-bake
