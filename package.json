@@ -8,7 +8,7 @@
 		"url": "git://github.com/pvorb/node-indexing.git"
 	},
 	"bugs": {
-		"web": "https://github.com/pvorb/indexing/issues"
+		"web": "https://github.com/pvorb/node-indexing/issues"
 	},
 	"main": "lib/Index.js",
 	"engines": {
