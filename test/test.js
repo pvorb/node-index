@@ -1,17 +1,18 @@
 var Index = require("../");
 
-var opt = {
-	directories: {
-		indexing: "pub",
-		templates: "tpl"
-	},
-	dbinf: {
+var dbinf = {
 		host: "localhost",
 		port: 27017,
 		name: "index",
 		collection: "pages"
+};
+
+var opt = {
+	directories: {
+		output: "pub",
+		templates: "tpl"
 	},
-	index: [
+	indexes: [
 		{
 			title: "Blog",
 			pattern: /\/\d\/[^\/]+/,
@@ -36,7 +37,7 @@ var opt = {
 	}
 };
 
-new Index(opt, function(index) {
+new Index(dbinf, function(index) {
 
 	var olderdate = new Date();
 
@@ -63,5 +64,5 @@ new Index(opt, function(index) {
 		date: (new Date()).toISOString()
 	});
 
-	index.write();
+	index.write(opt);
 });
