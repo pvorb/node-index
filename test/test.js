@@ -35,7 +35,11 @@ var opt = {
 	],
 	tags: {
 		template: "tag.tpl",
-		sort: [["date", "desc"]]
+		sort: [["date", "desc"]],
+		index: {
+			path: "index.html",
+			template: "tag-index.tpl"
+		}
 	},
 	properties: {
 		siteTitle: "My Site"
