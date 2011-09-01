@@ -2,7 +2,8 @@
 	"author": "Paul Vorbach <paul@vorb.de> (http://vorb.de)",
 	"name": "Index",
 	"description": "bakes index files, feeds and tag pages for websites",
-	"version": "0.1.1",
+	"tags": [ "ejs", "index", "feed", "tags" ],
+	"version": "0.1.2",
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/pvorb/node-index.git"
