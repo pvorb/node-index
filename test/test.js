@@ -15,7 +15,6 @@ var opt = {
 	},
 	indexes: [
 		{
-			title: "Blog",
 			pattern: /\/\d\/[^\/]+/,
 			path: {
 				first: "index.html",
@@ -23,14 +22,20 @@ var opt = {
 			},
 			template: "index.tpl",
 			limit: 2,
-			sort: [["date", "desc"]]
+			sort: [["date", "desc"]],
+			properties: {
+				title: "Blog",
+			}
 		},
 		{
-			title: "Blog",
 			path: "feed.xml",
 			template: "atom.tpl",
 			limit: 8,
-			sort: [["date", "desc"]]
+			sort: [["date", "desc"]],
+			properties: {
+				title: "Feed",
+				id: "some uuid or something"
+			}
 		}
 	],
 	tags: {
