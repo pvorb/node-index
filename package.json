@@ -1,26 +1,26 @@
 {
-	"author": "Paul Vorbach <paul@vorb.de> (http://vorb.de)",
-	"name": "Index",
-	"description": "bakes index files, feeds and tag pages for websites",
-	"tags": [ "ejs", "index", "feed", "tags" ],
-	"version": "0.3.0",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/pvorb/node-index.git"
-	},
-	"bugs": {
-		"web": "https://github.com/pvorb/node-index/issues"
-	},
-	"main": "exports.js",
-	"engines": {
-		"node": ">=0.4.0"
-	},
-	"dependencies": {
-		"mongodb": ">=0.9.6-16",
-		"ejs": ">=0.4.3",
-		"append": ">=0.1.0",
-		"clone": ">=0.0.1",
-		"esc": ">=0.0.1",
-		"isodate": ">=0.0.2"
-	}
+  "author": "Paul Vorbach <paul@vorb.de> (http://vorb.de)",
+  "name": "Index",
+  "description": "bakes index files, feeds and tag pages for websites",
+  "tags": [ "ejs", "index", "feed", "tags" ],
+  "version": "0.3.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pvorb/node-index.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pvorb/node-index/issues"
+  },
+  "main": "exports.js",
+  "engines": {
+    "node": ">=0.4.0"
+  },
+  "dependencies": {
+    "mongodb": "0.9.6-23",
+    "ejs": ">=0.4.3",
+    "append": ">=0.1.0",
+    "clone": ">=0.0.1",
+    "esc": ">=0.0.1",
+    "isodate": ">=0.0.2"
+  }
 }
