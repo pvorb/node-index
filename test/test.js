@@ -1,87 +1,98 @@
-var Index = require("../");
+var Index = require('../');
+var async = require('async');
 
-var dbinf = {
-		host: "localhost",
-		port: 27017,
-		name: "index",
-		collection: "pages"
+var db = {
+  host: 'localhost',
+  port: 27017,
+  name: 'index',
+  collection: 'index'
 };
 
 var opt = {
-	directories: {
-		output: "pub",
-		tags: "pub/tag",
-		templates: "tpl"
-	},
-	indexes: [
-		{
-			pattern: /\/\d\/[^\/]+/,
-			path: {
-				first: "index.html",
-				pattern: "index-{{page}}.html"
-			},
-			template: "index.tpl",
-			limit: 2,
-			sort: [["date", "desc"]],
-			properties: {
-				title: "Blog",
-			}
-		},
-		{
-			path: "feed.xml",
-			template: "atom.tpl",
-			limit: 8,
-			sort: [["date", "desc"]],
-			properties: {
-				title: "Feed",
-				id: "some uuid or something"
-			}
-		}
-	],
-	tags: {
-		template: "tag.tpl",
-		sort: [["date", "desc"]],
-		index: {
-			path: "index.html",
-			template: "tag-index.tpl"
-		}
-	},
-	properties: {
-		siteTitle: "My Site"
-	}
+  root: 'pub',
+
+  db: db,
+
+  indexes: [
+    {
+      pattern: '^/\\d/[^\\/]+$',
+      path: {
+        first: 'index.html',
+        pattern: 'index-{{page}}.html'
+      },
+      template: 'index.tpl',
+      limit: 2,
+      sort: [['date', 'desc']],
+      properties: {
+        title: 'Blog',
+      }
+    },
+    {
+      pattern: '^/\\d/[^\\/]+$',
+      path: 'feed.xml',
+      template: 'atom.tpl',
+      limit: 8,
+      sort: [['date', 'desc']],
+      properties: {
+        title: 'Feed',
+        id: 'some uuid or another unique string'
+      }
+    }
+  ],
+  tags: {
+    directory: 'pub/tag',
+    template: 'tag.tpl',
+    sort: [['date', 'desc']],
+    index: {
+      path: 'index.html',
+      template: 'tag-index.tpl'
+    }
+  }
 };
 
-new Index(dbinf, function(index) {
+new Index(opt, function(err, index) {
+  if (err)
+    throw err;
 
-	var olderdate = new Date();
+  var olderdate = new Date();
 
-	// Normal data
-	index.add({
-		_id: "/1/normal1.html",
-		date: (new Date()).toISOString(),
-		tags: ["normal"]
-	});
+  // Normal data
+  async.series([
 
-	// Without date
-	index.add({
-		_id: "/2/nodate.html",
-		tags: ["date"]
-	});
+    index.add({
+      _id: '/1/normal1.html',
+      date: (new Date()).toISOString(),
+      tags: ['normal']
+    }),
 
-	// With older date
-	index.add({
-		_id: "/3/olderdate.html",
-		date: olderdate.toISOString(),
-		tags: ["normal", "date"]
-	});
+    // Without date
+    index.add({
+      _id: '/2/nodate.html',
+      tags: ['date']
+    }),
 
-	// Normal data
-	index.add({
-		_id: "/4/normal2.html",
-		date: (new Date()).toISOString(),
-		tags: ["normal"]
-	});
+    // With older date
+    index.add({
+      _id: '/3/olderdate.html',
+      date: olderdate.toISOString(),
+      tags: ['normal', 'date']
+    }),
 
-	index.write(opt);
-	index.writeTags(opt);
+    // Normal data
+    index.add({
+      _id: '/4/normal2.html',
+      date: (new Date()).toISOString(),
+      tags: ['normal']
+    }),
+
+    // write indexes
+    index.write(function () {}),
+
+    // write tags
+    index.writeTags(function () {})
+
+  ], function (err) {
+    if (err)
+      throw err;
+  });
 });
