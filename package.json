@@ -27,5 +27,7 @@
     "esc": ">=0.0.2",
     "isodate": ">=0.1.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "async": ">=0.1.15"
+  }
 }
