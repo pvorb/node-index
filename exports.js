@@ -1,6 +1,6 @@
-var Index = require("./lib/Index");
-require("./lib/Index.add");
-require("./lib/Index.write");
-require("./lib/Index.writeTags");
+var Index = require('./lib/Index.js');
+require('./lib/add.js');
+require('./lib/writeIndex.js');
+require('./lib/writeTags.js');
 
 module.exports = Index;
