@@ -1,11 +1,10 @@
 var Index = require('../');
-var async = require('async');
 
 var db = {
   host: 'localhost',
   port: 27017,
-  name: 'index',
-  collection: 'index'
+  name: 'test',
+  collection: 'test'
 };
 
 var opt = {
@@ -56,43 +55,56 @@ new Index(opt, function(err, index) {
 
   var olderdate = new Date();
 
-  // Normal data
-  async.series([
+  var todo = 4;
 
-    index.add({
-      _id: '/1/normal1.html',
-      date: (new Date()).toISOString(),
-      tags: ['normal']
-    }),
-
-    // Without date
-    index.add({
-      _id: '/2/nodate.html',
-      tags: ['date']
-    }),
-
-    // With older date
-    index.add({
-      _id: '/3/olderdate.html',
-      date: olderdate.toISOString(),
-      tags: ['normal', 'date']
-    }),
-
-    // Normal data
-    index.add({
-      _id: '/4/normal2.html',
-      date: (new Date()).toISOString(),
-      tags: ['normal']
-    }),
-
-    // write indexes
-    index.write(function () {}),
-
-    // write tags
-    index.writeTags(function () {})
-
-  ], function (err) {
+  function cb(err, res) {
     if (err)
       throw err;
-  });
+    else {
+      if (!--todo) {
+        // write indexes
+        index.writeIndex(function (err) {
+          if (err) throw err;
+        }),
+
+        // write tags
+        index.writeTags(function (err) {
+          if (err) throw err;
+        });
+      }
+    }
+  }
+
+  // Normal data
+  index.add({
+    _id: '/1/normal1.html',
+    date: (new Date()).toISOString(),
+    tags: ['normal']
+  }, cb);
+
+  // Without date
+  index.add({
+    _id: '/2/nodate.html',
+    tags: ['date']
+  }, cb);
+
+  // Update record
+  index.add({
+    _id: '/2/nodate.html',
+    title: 'some title'
+  }, cb);
+
+  // With older date
+  index.add({
+    _id: '/3/olderdate.html',
+    date: olderdate.toISOString(),
+    tags: ['normal', 'date']
+  }, cb);
+
+  // Normal data
+  index.add({
+    _id: '/4/normal2.html',
+    date: (new Date()).toISOString(),
+    tags: ['normal']
+  }, cb);
 });

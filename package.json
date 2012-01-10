@@ -17,17 +17,14 @@
   },
   "main": "exports.js",
   "engines": {
-    "node": ">=0.4.0"
+    "node": ">=0.6.0"
   },
   "dependencies": {
-    "mongodb": "0.9.6-23",
+    "mongodb": ">=0.9.7",
     "ejs": ">=0.6.1",
     "append": ">=0.1.1",
     "clone": ">=0.0.4",
     "esc": ">=0.0.2",
     "isodate": ">=0.1.0"
-  },
-  "devDependencies": {
-    "async": ">=0.1.15"
   }
 }
