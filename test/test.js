@@ -1,16 +1,16 @@
 var Index = require('../');
-
-var db = {
-  host: 'localhost',
-  port: 27017,
-  name: 'test',
-  collection: 'test'
-};
+var path = require('path');
 
 var opt = {
   root: 'pub',
+  confdir: __dirname,
 
-  db: db,
+  db: {
+    host: 'localhost',
+    port: 27017,
+    name: 'test',
+    collection: 'test'
+  },
 
   indexes: [
     {
@@ -39,26 +39,26 @@ var opt = {
     }
   ],
   tags: {
-    directory: 'pub/tag',
+    directory: 'tag',
     template: 'tag.tpl',
     sort: [['date', 'desc']],
     index: {
       path: 'index.html',
       template: 'tag-index.tpl'
     }
-  }
-};
+  },
 
-var globals = {
-  siteTitle: 'My Site'
+  properties: {
+    siteTitle: 'My website'
+  }
 };
 
 new Index(opt, function(err, index) {
   if (err)
     throw err;
 
-  // set globals
-  index.properties = globals;
+  opt.root = path.resolve(__dirname, opt.root);
+
   var olderdate = new Date();
 
   var todo = 4;
