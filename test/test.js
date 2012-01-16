@@ -49,10 +49,16 @@ var opt = {
   }
 };
 
+var globals = {
+  siteTitle: 'My Site'
+};
+
 new Index(opt, function(err, index) {
   if (err)
     throw err;
 
+  // set globals
+  index.properties = globals;
   var olderdate = new Date();
 
   var todo = 4;
