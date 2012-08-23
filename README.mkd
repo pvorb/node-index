@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/pvorb/node-index.png)](http://travis-ci.org/pvorb/node-index)
 **Index** is a package that allows creating an index of webpages in a
 mongo database.
 
